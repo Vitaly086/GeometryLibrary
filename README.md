@@ -29,10 +29,9 @@
 ## Запрос к базе данных для выбора пар «Имя продукта – Имя категории»
 
 ```sql
-SELECT p.ProductName, c.CategoryName
-FROM Products p
-LEFT JOIN ProductCategories pc ON p.ProductID = pc.ProductID
-LEFT JOIN Categories c ON pc.CategoryID = c.CategoryID
-ORDER BY p.ProductName, c.CategoryName;
+select product_name, category_name
+from products p 
+left join product_categories pc on pc.product_id = p.product_id 
+left join categories c on c.category_id = pc.category_id 
 ```
 
