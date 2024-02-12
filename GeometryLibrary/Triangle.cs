@@ -8,15 +8,7 @@ public class Triangle : IShape
 
     public Triangle(double sideA, double sideB, double sideC)
     {
-        if (sideA <= 0 || sideB <= 0 || sideC <= 0)
-        {
-            throw new ArgumentException("Sides must be positive");
-        }
-
-        if (sideA + sideB <= sideC || sideA + sideC <= sideB || sideB + sideC <= sideA)
-        {
-            throw new ArgumentException("The provided dimensions do not form a triangle");
-        }
+        CheckTriangleValidity(sideA, sideB, sideC);
 
         _sideA = sideA;
         _sideB = sideB;
@@ -40,5 +32,18 @@ public class Triangle : IShape
         var hypotenuse = sides[2];
 
         return Math.Abs(Math.Pow(hypotenuse, 2) - (Math.Pow(a, 2) + Math.Pow(b, 2))) < double.Epsilon;
+    }
+
+    private void CheckTriangleValidity(double sideA, double sideB, double sideC)
+    {
+        if (sideA <= 0 || sideB <= 0 || sideC <= 0)
+        {
+            throw new ArgumentException("Sides must be positive");
+        }
+
+        if (sideA + sideB <= sideC || sideA + sideC <= sideB || sideB + sideC <= sideA)
+        {
+            throw new ArgumentException("The provided dimensions do not form a triangle");
+        }
     }
 }

@@ -6,16 +6,20 @@ public class Circle : IShape
 
     public Circle(double radius)
     {
-        if (radius <= 0)
-        {
-            throw new ArgumentException("Radius must be positive", nameof(radius));
-        }
-        
+        CheckRadiusValidity(radius);
         _radius = radius;
     }
 
     public double CalculateArea()
     {
         return Math.PI * Math.Pow(_radius, 2);
+    }
+
+    private void CheckRadiusValidity(double radius)
+    {
+        if (radius <= 0)
+        {
+            throw new ArgumentException("Radius must be positive", nameof(radius));
+        }
     }
 }
